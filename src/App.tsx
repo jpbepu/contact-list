@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { GlobalStyle } from './styles'
+import Form from './containers/Form';
+import Contato from './components/Contato';
+
+// import { Provider } from 'react-redux'
+// import { store } from './store'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <GlobalStyle />
+      <div className="container">
+        <h1>Lista de Contatos</h1>
+        <Form />
+        <Contato/>
+
+
+      </div>
+    </>
+  )
 }
 
 export default App;
