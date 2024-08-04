@@ -1,42 +1,38 @@
+
+import { useDispatch } from 'react-redux'
+
 import * as S from "./style"
 import { useState } from "react"
+import { teste } from '../../store/reducers/contacts'
+
+
+
+export type Contatos = {
+    nome: string,   
+    email: string,
+    tel: number,
+    id: number
+}
 
 const Contato = () => {
 
-    // type Contatos = {
-    //     nome: string,   
-    //     email: string,
-    //     tel: number
-    // }
-
+    const dispatch = useDispatch()
 
     const [contatos, setContatos] = useState([
-        {
-            nome: 'teste 1',
-            email: 'teste@teste.com',
-            tel: '11111111'
-        },
-        {
-            nome: 'teste 2',
-            email: 'teste2@teste.com',
-            tel: '22222222'
-        }
-        
-    ])
 
-    const cont = [
         {
             nome: 'teste 1',
             email: 'teste@teste.com',
-            tel: '11111111'
+            tel: '11111111',
+            id: 1
         },
         {
             nome: 'teste 2',
             email: 'teste2@teste.com',
-            tel: '22222222'
-        }
-        
-    ]
+            tel: '22222222',
+            id: 2
+        }  
+    ])
 
     return (
 
@@ -53,7 +49,7 @@ const Contato = () => {
                         <h3>{c.tel}</h3>
                     </div>
                     <div>
-                        <button>Editar</button>
+                        <button onClick={() => dispatch(teste('hi'))}>Editar</button>
                         <button>Excluir</button>
                     </div>
         
