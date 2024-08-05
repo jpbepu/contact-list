@@ -1,20 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Contatos } from "../../components/Contato";
 
 const initialState = {
 
     items: [
         {
-            nome: 'teste 1',
+            nome: 'teste REDUX',
             email: 'teste@teste.com',
-            tel: '11111111',
-            id: 1
+            tel: 11111111,
         },
         {
             nome: 'teste 2',
             email: 'teste2@teste.com',
-            tel: '2222222',
-            id: 1
+            tel: 2222222,
         }
 
     ]
@@ -29,48 +26,44 @@ const contactSlice = createSlice({
 
         teste: (state, action: PayloadAction<string>) => {
             console.log(action.payload)
-        }
+        },
 
-        // register: (state, action : PayloadAction<Omit<Contatos, 'id'>>) =>{
-        //     const existingContact = state.items.find(
-        //         c => c.nome.toLowerCase() === action.payload.nome.toLowerCase()
-        //     )
+        //registra novo contato
+        register: (state, action : PayloadAction<any>) =>{
 
-        //     if (existingContact) {
-        //         alert('Contato repetido')
-        //     } else {
-                
-        //         const lastContact = state.items[state.items.length -1]
-                
+            //checa se o contato ja exite pelo nome
+            const existingContact = state.items.find(
+                c => c.nome.toLowerCase() === action.payload.nome.toLowerCase()
+            )
+            if (existingContact) {
+                alert('Contato repetido')
+            } else {
+                state.items = [...state.items, action.payload]
+            }
+        },
 
-        //         const newContact = {
-        //             ...action.payload,
-        //             id: lastContact ? lastContact.id + 1 : 1
-        //         }
+        //remove contato com base no nome
+        remove: (state, action: PayloadAction<any>) => {
 
-        //         state.items.push(newContact)
-        //     }
-        // }
+            state.items = state.items.filter(c => c.nome !== action.payload)
 
-        // //remove contato com base no id passado na payload
-        // remove: (state, action: PayloadAction<number>) => {
-        //     state.items = state.items.filter(c => c.id !== action.payload)
-        // },
+            console.log(`contato ${action.payload} removido`)
+        },
 
-        // //edita o contato com base no id passado na payload
-        // edit: (state, action: PayloadAction<Contatos>) => {
-        //     const contactIndex = state.items.findIndex(c => c.id === action.payload.id)
+        //edita o contato com base no nome
+        edit: (state, action: PayloadAction<any>) => {
+            const contactIndex = state.items.findIndex(c => c.nome === action.payload.nome)
 
-        //     if (contactIndex >= 0) {
-        //         state.items[contactIndex] = action.payload
-        //     }
-        // },
+            if (contactIndex >= 0) {
+                state.items[contactIndex] = action.payload
+            }
+        },
 
 
 
-    }
+    },
 
 })
 
-export const { teste } = contactSlice.actions
+export const { teste, register, remove, edit } = contactSlice.actions
 export default contactSlice.reducer

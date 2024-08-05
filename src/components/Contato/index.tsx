@@ -1,79 +1,43 @@
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
-import * as S from "./style"
-import { useState } from "react"
-import { teste } from '../../store/reducers/contacts'
+import * as S from './style'
+import { remove } from '../../store/reducers/contacts'
 
 
 
-export type Contatos = {
+export type Props = {
     nome: string,   
     email: string,
     tel: number,
-    id: number
 }
 
-const Contato = () => {
+
+const Contato = ({ nome, email, tel }: Props) => {
 
     const dispatch = useDispatch()
 
-    const [contatos, setContatos] = useState([
 
-        {
-            nome: 'teste 1',
-            email: 'teste@teste.com',
-            tel: '11111111',
-            id: 1
-        },
-        {
-            nome: 'teste 2',
-            email: 'teste2@teste.com',
-            tel: '22222222',
-            id: 2
-        }  
-    ])
 
     return (
 
-        <>
-        
-        
-                {contatos.map((c) => (
-        
-                <S.Card key={c.nome}>
+                <S.Card key={nome}>
                     <div>
-                        <h2>{c.nome}</h2>
+                        <h2>{nome}</h2>
                         <br />
-                        <h3>{c.email}</h3>
-                        <h3>{c.tel}</h3>
+                        <h3>{email}</h3>
+                        <h3>{tel}</h3>
                     </div>
                     <div>
-                        <button onClick={() => dispatch(teste('hi'))}>Editar</button>
-                        <button>Excluir</button>
+                        <button onClick={() => {
+
+                            dispatch(remove(nome))
+                        }}>Editar</button>
+                        <button onClick={() => dispatch(remove(nome))}>Excluir</button>
                     </div>
         
                 </S.Card>
-                ))}
-        
-        </>
-
-
-
-        // <S.Card>
-        //     <div>
-        //         <h2>Nome</h2>
-        //         <br />
-        //         <h3>Email</h3>
-        //         <h3>Telefone</h3>
-        //     </div>
-        //     <div>
-        //         <button>Editar</button>
-        //         <button>Excluir</button>
-        //     </div>
-
-        // </S.Card>
-
     )
 }
 
