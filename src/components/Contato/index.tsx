@@ -4,13 +4,14 @@ import { RootReducer } from '../../store'
 
 import * as S from './style'
 import { remove } from '../../store/reducers/contacts'
+import { editContato } from '../../store/reducers/form'
 
 
 
-export type Props = {
+type Props = {
     nome: string,   
     email: string,
-    tel: number,
+    tel: string,
 }
 
 
@@ -32,7 +33,7 @@ const Contato = ({ nome, email, tel }: Props) => {
                     <div>
                         <button onClick={() => {
 
-                            dispatch(remove(nome))
+                            dispatch(editContato({nome, email, tel}))
                         }}>Editar</button>
                         <button onClick={() => dispatch(remove(nome))}>Excluir</button>
                     </div>

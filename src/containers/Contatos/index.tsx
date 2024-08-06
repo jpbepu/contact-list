@@ -13,12 +13,17 @@ const Contatos = () => {
 
 
     const contatos = useSelector((state: RootReducer) => state.contact)
+    const editContato = useSelector((state: RootReducer) => state.form)
 
     return (
 
         <>
         
-            <Form/>
+            <Form
+                editNome={editContato.nome}
+                editEmail={editContato.email}
+                editTel={editContato.tel}
+            />
             
             {contatos.items.map((c) => (
                 <Contato
