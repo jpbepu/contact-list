@@ -4,12 +4,12 @@ const initialState = {
 
     items: [
         {
-            nome: 'teste REDUX',
+            nome: 'Nome 1',
             email: 'teste@teste.com',
             tel: '11111111',
         },
         {
-            nome: 'teste 2',
+            nome: 'Nome 2',
             email: 'teste2@teste.com',
             tel: '2222222',
         }
@@ -50,7 +50,7 @@ const contactSlice = createSlice({
             console.log(`contato ${action.payload} removido`)
         },
 
-        //edita o contato com base no nome
+        //edita o contato com base no index
         edit: (state, action: PayloadAction<any>) => {
             const contactIndex = state.items.findIndex(c => c.nome === action.payload.nome)
 
