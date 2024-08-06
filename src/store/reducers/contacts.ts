@@ -6,12 +6,12 @@ const initialState = {
         {
             nome: 'teste REDUX',
             email: 'teste@teste.com',
-            tel: 11111111,
+            tel: '11111111',
         },
         {
             nome: 'teste 2',
             email: 'teste2@teste.com',
-            tel: 2222222,
+            tel: '2222222',
         }
 
     ]

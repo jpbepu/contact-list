@@ -28,3 +28,18 @@ export const Card = styled.div`
     }
 
 `
+
+export const TextField = styled.textarea`
+    display: block;
+    height: 24px;
+    width: 100%;
+    margin: 16px 0;
+    font-weight: bold;
+    font-size: 20px;
+
+    resize: none;
+    border: none;
+    background-color: transparent;
+
+
+`

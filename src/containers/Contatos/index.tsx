@@ -21,7 +21,7 @@ const Contatos = () => {
             <Form/>
             
             {contatos.items.map((c) => (
-                <Contato
+                <Contato key={c.nome}
                     nome={c.nome}
                     email={c.email}
                     tel={c.tel}
